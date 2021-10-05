@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Title from './Title.js';
 import PhotoWall from './PhotoWall.js';
+import AddPhoto from './AddPhoto.js';
+import {Route} from 'react-router-dom';
    
 
 class Main extends Component{
@@ -35,11 +37,29 @@ class Main extends Component{
         )
     }
 
+
+    componentDidMount(){
+
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        console.log(prevState.posts)
+        console.log(this.state)
+    }
+
     render(){
         return ( 
         <div> 
-            <Title title={'Photowall'}/>
-            <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto}/>
+        
+        <Route exact path = "/" render= {() => ( //render is a render prop which takes in a function and renders it and exact path means only on / display this and ignore partial match
+            <div>
+                <Title title={'Photowall'}/>
+                <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate}/>
+            </div>
+        )}/>
+            
+        <Route path = "/AddPhoto" component = {AddPhoto}/>
+        
         </div>
             )
     }
