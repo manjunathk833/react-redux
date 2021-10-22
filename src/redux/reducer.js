@@ -1,9 +1,16 @@
 import _posts from '../data/posts.js';
 import {combineReducers} from 'redux';
 
-const comments = (state=[], action) => {
+const comments = (state={}, action) => {
     switch (action.type){
-        case 'ADD_COMMENT': return [...state, action.comment]
+        case 'ADD_COMMENT': 
+        
+        if(!(state[action.postId])){
+        return {...state, [action.postId]: [action.comment]}
+        }
+        else {
+            return {...state, [action.postId]: [...state[action.postId], action.comment]}
+        }
         default: return state
     }
 }
