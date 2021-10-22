@@ -1,6 +1,6 @@
 //remove
 
-const removePost = (index) => {
+export function removePost(index){
     return {
         type: 'REMOVE_POST',
         index
@@ -16,6 +16,9 @@ export function addPost(post) {
     }
 }
 
-export default removePost;
-
-
+export function addComment(comment){
+    return{
+        type: 'ADD_COMMENT',
+        comment
+    }
+}

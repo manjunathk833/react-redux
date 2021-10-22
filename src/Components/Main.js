@@ -1,15 +1,10 @@
 import React, {Component} from 'react';
-import Title from './Title.js';
 import PhotoWall from './PhotoWall.js';
 import AddPhoto from './AddPhoto.js';
 import {Route, Link} from 'react-router-dom';
-import {removePost} from '../redux/actions';
 import Single from './Single'
 
 class Main extends Component{
-    constructor(){
-        super(); //super needs to be declared since you're extending component
-    }
 
 
     render(){ 
