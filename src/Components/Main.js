@@ -6,9 +6,18 @@ import Single from './Single'
 
 class Main extends Component{
 
+    state = { loading: true }
+    
+    componentDidMount(){
+       this.props.startLoadingPost().then(() => {
+           this.setState({loading: false})
+       })
+       this.props.startLoadingComments()
+    }
 
     render(){ 
-        console.log(this.props);
+        //console.log(this.props);
+        console.log(process.env)
         return ( 
         <div> 
             <h1>
@@ -26,7 +35,7 @@ class Main extends Component{
             <AddPhoto {...this.props} onHistory={history}/>
         )}/> 
         <Route path = "/single/:id" render = {(params) => (
-                <Single {...this.props} {...params}/>
+                <Single loading = {this.state.loading} {...this.props} {...params}/>
             )}/>
         </div>
             )
